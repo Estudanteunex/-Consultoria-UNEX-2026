@@ -1,0 +1,1116 @@
+<!DOCTYPE html>
+<html lang="pt-BR" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Estratégia em Ação - Martins Planejados | Consultoria UNEX 2026</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        martins: {
+                            dark: '#070a13',
+                            card: 'rgba(15, 23, 42, 0.7)',
+                            accent: '#38bdf8',
+                            gold: '#fbbf24',
+                            emerald: '#10b981',
+                            violet: '#8b5cf6',
+                            rose: '#f43f5e'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                        mono: ['JetBrains Mono', 'monospace']
+                    }
+                }
+            }
+        }
+    </script>
+    <!-- Fonts & Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <!-- Chart.js -->
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #05070e;
+            color: #f1f5f9;
+        }
+
+        /* Glassmorphism Styles */
+        .glass-panel {
+            background: rgba(15, 23, 42, 0.65);
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.5);
+        }
+
+        .glass-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.04) 0%, rgba(255, 255, 255, 0.01) 100%);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .glass-card:hover {
+            border-color: rgba(56, 189, 248, 0.35);
+            box-shadow: 0 12px 35px rgba(56, 189, 248, 0.12), inset 0 0 15px rgba(56, 189, 248, 0.03);
+        }
+
+        /* Glow effect */
+        .glow-orb-cyan {
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.18) 0%, rgba(0,0,0,0) 70%);
+        }
+        .glow-orb-gold {
+            background: radial-gradient(circle, rgba(251, 191, 36, 0.12) 0%, rgba(0,0,0,0) 70%);
+        }
+
+        /* Scrollbar */
+        ::-webkit-scrollbar {
+            width: 6px;
+            height: 6px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #05070e;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: rgba(255, 255, 255, 0.15);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: rgba(56, 189, 248, 0.4);
+        }
+    </style>
+</head>
+<body class="min-h-screen relative overflow-x-hidden selection:bg-sky-400 selection:text-slate-950">
+
+    <!-- Ambient Glow Backgrounds -->
+    <div class="fixed top-[-10%] left-[-10%] w-[50vw] h-[50vw] rounded-full glow-orb-cyan pointer-events-none z-0"></div>
+    <div class="fixed bottom-[-10%] right-[-10%] w-[55vw] h-[55vw] rounded-full glow-orb-gold pointer-events-none z-0"></div>
+
+    <!-- MAIN CONTAINER -->
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-8">
+
+        <!-- HEADER ACADÊMICO & MARCA -->
+        <header class="glass-panel rounded-3xl p-6 lg:p-8 relative overflow-hidden">
+            <div class="absolute right-0 top-0 bottom-0 w-1/3 bg-gradient-to-l from-sky-500/10 to-transparent pointer-events-none"></div>
+
+            <div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-6 relative z-10">
+                
+                <!-- Logo & Dados da Instituição -->
+                <div class="space-y-3 max-w-2xl">
+                    <div class="flex flex-wrap items-center gap-2">
+                        <span class="px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono font-semibold flex items-center gap-1.5">
+                            <i class="ph-bold ph-graduation-cap text-sm"></i> UNEX - CENTRO UNIVERSITÁRIO DE EXCELÊNCIA
+                        </span>
+                        <span class="px-3 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-amber-400 text-xs font-mono font-semibold">
+                            ADMINISTRAÇÃO • 2026
+                        </span>
+                    </div>
+
+                    <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+                        ESTRATÉGIA EM AÇÃO
+                    </h1>
+                    <p class="text-slate-300 text-sm sm:text-base font-medium">
+                        Diagnóstico e Planejamento Estratégico da Empresa <span class="text-sky-400 font-bold">Martins Planejados</span>
+                    </p>
+                    <p class="text-xs text-slate-400 font-mono">
+                        📍 Itabuna - BA &nbsp;|&nbsp; 👨‍🏫 Orientador: <strong class="text-slate-200">Prof. Yukio Takada</strong>
+                    </p>
+                </div>
+
+                <!-- Card de Consultores / Autores -->
+                <div class="w-full lg:w-auto bg-slate-950/80 rounded-2xl p-4 border border-slate-800 text-xs space-y-2 font-mono flex-shrink-0">
+                    <div class="text-slate-400 font-semibold uppercase tracking-wider text-[11px] flex items-center justify-between border-b border-slate-800 pb-2">
+                        <span>Equipe de Consultoria</span>
+                        <i class="ph-bold ph-users text-sky-400"></i>
+                    </div>
+                    <ul class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-x-4 gap-y-1 text-slate-200">
+                        <li class="flex items-center gap-1.5"><i class="ph-bold ph-check text-sky-400 text-[10px]"></i> Guilherme de Souza Santos</li>
+                        <li class="flex items-center gap-1.5"><i class="ph-bold ph-check text-sky-400 text-[10px]"></i> Maciel Santos Martins</li>
+                        <li class="flex items-center gap-1.5"><i class="ph-bold ph-check text-sky-400 text-[10px]"></i> Pedro Max Meira Barros</li>
+                        <li class="flex items-center gap-1.5"><i class="ph-bold ph-check text-sky-400 text-[10px]"></i> Weslley Santos de Andrade</li>
+                        <li class="flex items-center gap-1.5"><i class="ph-bold ph-check text-sky-400 text-[10px]"></i> Wilton Santos Araújo</li>
+                    </ul>
+                </div>
+            </div>
+        </header>
+
+        <!-- NAVEGAÇÃO DE ABAS INTERATIVAS -->
+        <nav class="flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none border-b border-slate-800/80">
+            <button onclick="switchTab('tab-visao-geral')" id="btn-tab-visao-geral" class="tab-btn active px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm whitespace-nowrap transition-all bg-sky-500 text-slate-950 shadow-lg shadow-sky-500/20 flex items-center gap-2">
+                <i class="ph-bold ph-squares-four"></i> Visão Geral & Desafio
+            </button>
+            <button onclick="switchTab('tab-swot')" id="btn-tab-swot" class="tab-btn px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-400 hover:text-white hover:bg-slate-900/60 flex items-center gap-2">
+                <i class="ph-bold ph-chart-polar"></i> Matriz SWOT (FOFA)
+            </button>
+            <button onclick="switchTab('tab-direcionamento')" id="btn-tab-direcionamento" class="tab-btn px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-400 hover:text-white hover:bg-slate-900/60 flex items-center gap-2">
+                <i class="ph-bold ph-compass"></i> Direcionamento Estratégico
+            </button>
+            <button onclick="switchTab('tab-smart-assistente')" id="btn-tab-smart-assistente" class="tab-btn px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-400 hover:text-white hover:bg-slate-900/60 flex items-center gap-2">
+                <i class="ph-bold ph-sparkle"></i> Linha Smart Assistente
+            </button>
+            <button onclick="switchTab('tab-5w2h')" id="btn-tab-5w2h" class="tab-btn px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-400 hover:text-white hover:bg-slate-900/60 flex items-center gap-2">
+                <i class="ph-bold ph-table"></i> Plano de Ação 5W2H
+            </button>
+            <button onclick="switchTab('tab-simulador')" id="btn-tab-simulador" class="tab-btn px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-400 hover:text-white hover:bg-slate-900/60 flex items-center gap-2">
+                <i class="ph-bold ph-calculator"></i> Simulador Financeiro
+            </button>
+            <button onclick="switchTab('tab-kpis')" id="btn-tab-kpis" class="tab-btn px-4 py-2.5 rounded-xl font-semibold text-xs sm:text-sm whitespace-nowrap transition-all text-slate-400 hover:text-white hover:bg-slate-900/60 flex items-center gap-2">
+                <i class="ph-bold ph-chart-line-up"></i> KPIs & PDCA
+            </button>
+        </nav>
+
+        <!-- ABA 1: VISÃO GERAL & PROBLEMA CENTRAL (BENTO GRID) -->
+        <div id="tab-visao-geral" class="tab-content space-y-6">
+            <!-- Bento Grid 3 Colunas -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+
+                <!-- Card 1: Problema Estratégico Central (2 Colunas) -->
+                <div class="md:col-span-2 glass-card rounded-3xl p-6 lg:p-8 flex flex-col justify-between relative overflow-hidden">
+                    <div class="absolute right-0 bottom-0 text-sky-500/5 text-9xl font-black select-none pointer-events-none">01</div>
+                    <div>
+                        <div class="flex items-center gap-2 text-sky-400 text-xs font-mono font-semibold mb-3">
+                            <i class="ph-bold ph-target text-base"></i> PROBLEMA ESTRATÉGICO CENTRAL
+                        </div>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-4">
+                            Como ampliar a receita sem comprometer a qualidade dos móveis sob medida?
+                        </h3>
+                        <p class="text-slate-300 text-sm leading-relaxed mb-4">
+                            A <strong class="text-white">Martins Planejados</strong> (fundada por Maciel Martins em Itabuna-BA) utiliza cerca de <strong>1/3 da sua capacidade instalada projetada</strong> e gera sobras reaproveitáveis de MDF.
+                        </p>
+                        <p class="text-slate-400 text-xs leading-relaxed">
+                            O desafio consiste em estruturar a padronização e controles de custos para converter esses resíduos na nova linha <span class="text-sky-300 font-semibold">Smart Assistente</span>, aumentando a lucratividade sem comprometer os projetos customizados principais.
+                        </p>
+                    </div>
+
+                    <div class="mt-6 pt-4 border-t border-slate-800/80 flex flex-wrap items-center justify-between text-xs font-mono text-slate-400 gap-2">
+                        <span>✦ Formalização CNPJ: 2024</span>
+                        <span>✦ Operação Inicial: 2022</span>
+                        <span class="text-emerald-400 font-semibold">Capacidade Atual: ~33%</span>
+                    </div>
+                </div>
+
+                <!-- Card 2: Perfil Operacional -->
+                <div class="glass-card rounded-3xl p-6 flex flex-col justify-between">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-amber-400 text-xs font-mono font-semibold">CARACTERIZAÇÃO</span>
+                            <i class="ph-bold ph-wrench text-amber-400 text-lg"></i>
+                        </div>
+                        <h4 class="text-lg font-bold text-white mb-2">Estrutura Operacional</h4>
+                        <ul class="space-y-2 text-xs text-slate-300">
+                            <li class="flex items-start gap-2">
+                                <i class="ph-bold ph-caret-right text-amber-400 mt-0.5"></i>
+                                <span><strong>Localização:</strong> Rua Frei Joaquim Camele, nº 273, Pedro Jerônimo, Itabuna-BA.</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="ph-bold ph-caret-right text-amber-400 mt-0.5"></i>
+                                <span><strong>Fornecedores Chave:</strong> SERBRI e Casa do MDF (referências regionais).</span>
+                            </li>
+                            <li class="flex items-start gap-2">
+                                <i class="ph-bold ph-caret-right text-amber-400 mt-0.5"></i>
+                                <span><strong>Equipe:</strong> Enxuta, liderada pelo fundador com alta experiência técnica.</span>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 text-[11px] text-slate-400 font-mono">
+                        Concorrentes: Marcenarias locais vs. Varejo seriado
+                    </div>
+                </div>
+
+                <!-- Card 3: Investimento Incremental Ilustrativo -->
+                <div class="glass-card rounded-3xl p-6 flex flex-col justify-between bg-gradient-to-br from-slate-900/80 to-slate-950">
+                    <div>
+                        <div class="flex items-center justify-between mb-3">
+                            <span class="text-emerald-400 text-xs font-mono font-semibold">PILOTO DE 90 DIAS</span>
+                            <i class="ph-bold ph-currency-dollar text-emerald-400 text-xl"></i>
+                        </div>
+                        <div class="text-xs text-slate-400 uppercase font-mono">Orçamento Incremental Total</div>
+                        <div class="text-3xl font-extrabold text-white my-2 font-mono">R$ 2.050 - 3.000</div>
+                        <p class="text-slate-400 text-xs">
+                            Recursos alocados em prototipagem (3 unidades), controle de sobra, campanha digital e painel de indicadores.
+                        </p>
+                    </div>
+                    <div class="mt-4 pt-3 border-t border-slate-800/80 flex items-center justify-between text-xs text-emerald-400 font-mono">
+                        <span>Payback Estimado:</span>
+                        <span class="font-bold">~9 Unidades Vendidas</span>
+                    </div>
+                </div>
+
+                <!-- Card 4: Premissas & Metodologia (Largo) -->
+                <div class="md:col-span-3 lg:col-span-4 glass-card rounded-3xl p-6 relative overflow-hidden">
+                    <div class="flex items-center gap-2 text-indigo-400 text-xs font-mono font-semibold mb-3">
+                        <i class="ph-bold ph-book-open-text text-base"></i> FUNDAMENTAÇÃO TEÓRICA & LIMITAÇÕES ACADÊMICAS
+                    </div>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs text-slate-300">
+                        <div class="space-y-1">
+                            <div class="font-bold text-white flex items-center gap-1.5">
+                                <i class="ph-bold ph-user-focus text-sky-400"></i> Chiavenato & Sapiro (2023)
+                            </div>
+                            <p class="text-slate-400">
+                                Fundamenta a articulação entre diagnóstico dos ambientes, escolhas estratégicas e a execução contínua com controle de desempenho.
+                            </p>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="font-bold text-white flex items-center gap-1.5">
+                                <i class="ph-bold ph-tree-structure text-sky-400"></i> Oliveira (2018)
+                            </div>
+                            <p class="text-slate-400">
+                                Trata o planejamento estratégico como instrumento decisório com projetos, matriz 5W2H e rotinas claras de acompanhamento.
+                            </p>
+                        </div>
+                        <div class="space-y-1">
+                            <div class="font-bold text-white flex items-center gap-1.5">
+                                <i class="ph-bold ph-chart-pie-slice text-sky-400"></i> Kaplan & Norton (1996)
+                            </div>
+                            <p class="text-slate-400">
+                                Orienta a criação de indicadores balanceados (Financeiro, Clientes, Processos Internos e Aprendizado).
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <!-- Alert Box de Rastreabilidade -->
+                    <div class="mt-4 p-3 rounded-2xl bg-amber-500/10 border border-amber-500/20 text-amber-300 text-xs flex items-center gap-3">
+                        <i class="ph-bold ph-warning-circle text-xl flex-shrink-0"></i>
+                        <span><strong>Nota de Responsabilidade Técnica:</strong> Este estudo constitui um diagnóstico baseado em análise documental. Todos os custos, metas e cenários devem ser validados em campo com o fundador Maciel Martins antes de execução final.</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ABA 2: DIAGNÓSTICO SWOT (MATRIZ FOFA INTERATIVA) -->
+        <div id="tab-swot" class="tab-content hidden space-y-6">
+            <div class="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Matriz SWOT / FOFA Interativa</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm">Clique nos quadrantes ou nos botões de estratégia cruzada para visualizar o direcionamento estratégico.</p>
+                </div>
+                <!-- Filtros de Estratégias Cruzadas -->
+                <div class="flex flex-wrap items-center gap-2">
+                    <button onclick="filterSWOT('all')" id="btn-swot-all" class="swot-btn active px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 text-slate-950 transition-all">Todos Quadrantes</button>
+                    <button onclick="filterSWOT('fo')" id="btn-swot-fo" class="swot-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-slate-400 hover:text-white transition-all border border-slate-800">Forças × Oportunidades (Alavancagem)</button>
+                    <button onclick="filterSWOT('fa')" id="btn-swot-fa" class="swot-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-slate-400 hover:text-white transition-all border border-slate-800">Forças × Ameaças (Confronto)</button>
+                    <button onclick="filterSWOT('do')" id="btn-swot-do" class="swot-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-slate-400 hover:text-white transition-all border border-slate-800">Fraquezas × Oportunidades (Reforço)</button>
+                    <button onclick="filterSWOT('da')" id="btn-swot-da" class="swot-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-slate-400 hover:text-white transition-all border border-slate-800">Fraquezas × Ameaças (Defesa)</button>
+                </div>
+            </div>
+
+            <!-- Grid 2x2 SWOT -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6" id="swot-grid">
+                
+                <!-- FORÇAS (INTERNAS) -->
+                <div class="glass-card rounded-3xl p-6 border-l-4 border-l-emerald-500" id="card-swot-f">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-emerald-400 flex items-center gap-2">
+                            <i class="ph-bold ph-shield-check text-xl"></i> FORÇAS (Interno)
+                        </h3>
+                        <span class="text-xs font-mono text-emerald-400/80 bg-emerald-500/10 px-2.5 py-1 rounded-full border border-emerald-500/20">Capacidades</span>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Experiência Técnica do Fundador:</strong>
+                            Acúmulo prévio de conhecimento no setor moveleiro (Nanaina e Souza Móveis).
+                        </li>
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Qualidade & Customização:</strong>
+                            Elevado padrão de acabamento e forte adequação às necessidades do cliente sob medida.
+                        </li>
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Sobras Aproveitáveis de MDF:</strong>
+                            Disponibilidade de retalhos na produção que reduzem custos de matéria-prima para itens seriados.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- FRAQUEZAS (INTERNAS) -->
+                <div class="glass-card rounded-3xl p-6 border-l-4 border-l-rose-500" id="card-swot-w">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-rose-400 flex items-center gap-2">
+                            <i class="ph-bold ph-warning-octagon text-xl"></i> FRAQUEZAS (Interno)
+                        </h3>
+                        <span class="text-xs font-mono text-rose-400/80 bg-rose-500/10 px-2.5 py-1 rounded-full border border-rose-500/20">Limitações</span>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Equipe Enxuta & Dependência:</strong>
+                            Concentração excessiva de atividades operacionais e decisórias no fundador.
+                        </li>
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Controles Informais:</strong>
+                            Falta de séries históricas de custos, margem precisa por peça e capacidade produtiva medida.
+                        </li>
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Padronização de Sobras:</strong>
+                            Variabilidade dimensional dos retalhos que exige triagem e armazenagem dedicada.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- OPORTUNIDADES (EXTERNAS) -->
+                <div class="glass-card rounded-3xl p-6 border-l-4 border-l-sky-500" id="card-swot-o">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-sky-400 flex items-center gap-2">
+                            <i class="ph-bold ph-trend-up text-xl"></i> OPORTUNIDADES (Externo)
+                        </h3>
+                        <span class="text-xs font-mono text-sky-400/80 bg-sky-500/10 px-2.5 py-1 rounded-full border border-sky-500/20">Mercado</span>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Móveis Compactos & Smart:</strong>
+                            Crescente busca por soluções funcionais integradas com tecnologia (Smart Assistente).
+                        </li>
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Parcerias com Arquitetos:</strong>
+                            Fortalecimento do canal de prescritores e profissionais de interiores em Itabuna e região.
+                        </li>
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Canais Digitais de Alta Conversão:</strong>
+                            Atendimento ágil por WhatsApp e catálogo demonstrativo em redes sociais.
+                        </li>
+                    </ul>
+                </div>
+
+                <!-- AMEAÇAS (EXTERNAS) -->
+                <div class="glass-card rounded-3xl p-6 border-l-4 border-l-amber-500" id="card-swot-t">
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="text-lg font-bold text-amber-400 flex items-center gap-2">
+                            <i class="ph-bold ph-shield-warning text-xl"></i> AMEAÇAS (Externo)
+                        </h3>
+                        <span class="text-xs font-mono text-amber-400/80 bg-amber-500/10 px-2.5 py-1 rounded-full border border-amber-500/20">Riscos</span>
+                    </div>
+                    <ul class="space-y-3 text-xs text-slate-300">
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Concorrência Agressiva do Varejo:</strong>
+                            Grandes redes de móveis seriados competindo agressivamente por preço e prazo.
+                        </li>
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Volatilidade de Insumos:</strong>
+                            Oscilação constante nos custos de ferragens, fita de borda e componentes eletrônicos.
+                        </li>
+                        <li class="p-2.5 rounded-xl bg-slate-950/60 border border-slate-800/80">
+                            <strong class="text-white block mb-0.5">Risco de Imitação / Qualidade Técnica:</strong>
+                            Necessidade de rigor nos testes do produto com eletrônica para evitar retrabalhos/garantias.
+                        </li>
+                    </ul>
+                </div>
+
+            </div>
+
+            <!-- Caixa Explicativa da Análise Cruzada Ativa -->
+            <div id="swot-cross-analysis" class="p-6 rounded-3xl glass-panel border border-sky-500/30 text-xs space-y-2">
+                <div class="font-bold text-sky-400 uppercase tracking-wider text-[11px] flex items-center gap-2">
+                    <i class="ph-bold ph-arrows-merge text-base"></i> Leitura Estratégica Sintetizada
+                </div>
+                <p id="swot-cross-text" class="text-slate-200 leading-relaxed">
+                    A Martins Planejados deve posicionar-se por <strong class="text-sky-300">diferenciação e qualidade</strong>, evitando a disputa por menor preço com o varejo. A validação piloto do Smart Assistente absorve sobras com margem positiva antes de expandir a produção.
+                </p>
+            </div>
+        </div>
+
+        <!-- ABA 3: DIRECIONAMENTO ESTRATÉGICO (MISSÃO, VISÃO, VALORES) -->
+        <div id="tab-direcionamento" class="tab-content hidden space-y-6">
+            <div class="text-center max-w-2xl mx-auto mb-8">
+                <h2 class="text-2xl sm:text-3xl font-bold text-white">Direcionamento Organizacional Proposto</h2>
+                <p class="text-slate-400 text-xs sm:text-sm mt-1">Declarações institucionais elaboradas pela equipe de consultoria para aprovação da gestão (2026-2028).</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                
+                <!-- MISSÃO -->
+                <div class="glass-card rounded-3xl p-6 lg:p-8 flex flex-col justify-between border-t-4 border-t-sky-400">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-sky-500/10 border border-sky-500/30 text-sky-400 flex items-center justify-center text-2xl mb-4">
+                            <i class="ph-bold ph-target"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Missão Proposta</h3>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            "Transformar necessidades de ambientes em soluções de mobiliário funcionais, duráveis e bem executadas, valorizando o atendimento personalizado, a inovação e o uso responsável dos materiais."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400 font-mono">
+                        Foco: Excelência + Eficiência
+                    </div>
+                </div>
+
+                <!-- VISÃO 2028 -->
+                <div class="glass-card rounded-3xl p-6 lg:p-8 flex flex-col justify-between border-t-4 border-t-amber-400">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-500/10 border border-amber-500/30 text-amber-400 flex items-center justify-center text-2xl mb-4">
+                            <i class="ph-bold ph-eye"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Visão (Até Dez/2028)</h3>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            "Consolidar-se como referência regional em móveis personalizados e soluções compactas de alto valor percebido, com processos produtivos controlados e crescimento financeiramente sustentável."
+                        </p>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400 font-mono">
+                        Meta: Referência Regional
+                    </div>
+                </div>
+
+                <!-- VALORES -->
+                <div class="glass-card rounded-3xl p-6 lg:p-8 flex flex-col justify-between border-t-4 border-t-emerald-400">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-500/10 border border-emerald-500/30 text-emerald-400 flex items-center justify-center text-2xl mb-4">
+                            <i class="ph-bold ph-heart"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-white mb-3">Valores Propostos</h3>
+                        <ul class="space-y-1.5 text-xs text-slate-300 font-medium">
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-emerald-400"></i> Qualidade e Segurança Técnica</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-emerald-400"></i> Compromisso Total com o Cliente</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-emerald-400"></i> Ética e Transparência na Precificação</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-emerald-400"></i> Eficiência & Sustentabilidade no MDF</li>
+                            <li class="flex items-center gap-2"><i class="ph-bold ph-check text-emerald-400"></i> Melhoria Contínua de Processos</li>
+                        </ul>
+                    </div>
+                    <div class="mt-6 pt-4 border-t border-slate-800 text-[11px] text-slate-400 font-mono">
+                        Cultura: Inovação Responsável
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Posicionamento de Mercado Card -->
+            <div class="glass-panel rounded-3xl p-6 lg:p-8 flex flex-col md:flex-row items-center justify-between gap-6 border border-slate-800">
+                <div class="space-y-2">
+                    <span class="text-xs font-mono text-sky-400 font-semibold uppercase">Declaração de Posicionamento</span>
+                    <h4 class="text-lg font-bold text-white">Marcearia de Soluções Inteligentes & Responsáveis</h4>
+                    <p class="text-slate-300 text-xs max-w-3xl leading-relaxed">
+                        A Martins Planejados posiciona a linha <strong>Smart Assistente</strong> unindo design moderno, espaço funcional para assistentes digitais de voz, iluminação embutida e aproveitamento consciente de MDF, garantindo acabamento marcenaria de alto nível.
+                    </p>
+                </div>
+                <div class="flex-shrink-0 bg-slate-950 px-6 py-4 rounded-2xl border border-slate-800 text-center">
+                    <div class="text-xs text-slate-400 font-mono">Público Primário</div>
+                    <div class="text-sm font-bold text-white mt-1">25 a 45 anos | Compactos</div>
+                    <div class="text-[10px] text-sky-400 font-mono mt-0.5">Itabuna & Entorno</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA 4: LINHA SMART ASSISTENTE (PILOTO & INOVAÇÃO) -->
+        <div id="tab-smart-assistente" class="tab-content hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
+                
+                <!-- Descrição do Produto & Especificações (7 Colunas) -->
+                <div class="lg:col-span-7 space-y-6">
+                    <div>
+                        <span class="px-3 py-1 rounded-full bg-sky-500/10 border border-sky-500/30 text-sky-400 text-xs font-mono font-semibold">
+                            PRODUTO DIVERSIFICADO
+                        </span>
+                        <h2 class="text-3xl font-extrabold text-white mt-2">Criado-Mudo Smart Assistente</h2>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed mt-2">
+                            Móvel compacto de pronta entrega desenhado para reaproveitar retalhos de nobre MDF de alta densidade, integrando compartimento para caixa de som inteligente (Alexa/Google Home), tomadas embutidas e iluminação LED suave.
+                        </p>
+                    </div>
+
+                    <!-- Cards de Características do Produto -->
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                        <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800">
+                            <i class="ph-bold ph-recycle text-sky-400 text-xl mb-2"></i>
+                            <h4 class="text-sm font-bold text-white mb-1">MDF Rastreável</h4>
+                            <p class="text-xs text-slate-400">Aproveitamento de sobras nobres com corte otimizado por software de plano de corte.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800">
+                            <i class="ph-bold ph-speaker-high text-amber-400 text-xl mb-2"></i>
+                            <h4 class="text-sm font-bold text-white mb-1">Passagem de Cabos & Som</h4>
+                            <p class="text-xs text-slate-400">Nicho acústico ventilado para assistentes virtuais de voz sem obstruir o som.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800">
+                            <i class="ph-bold ph-lightning text-emerald-400 text-xl mb-2"></i>
+                            <h4 class="text-sm font-bold text-white mb-1">Automação & Luz LED</h4>
+                            <p class="text-xs text-slate-400">Fita LED integrada com acionamento por toque ou sensor de presença noturno.</p>
+                        </div>
+                        <div class="p-4 rounded-2xl bg-slate-950/70 border border-slate-800">
+                            <i class="ph-bold ph-[#00f2fe] ph-shield-check text-indigo-400 text-xl mb-2"></i>
+                            <h4 class="text-sm font-bold text-white mb-1">Testes Técnicos Rigorosos</h4>
+                            <p class="text-xs text-slate-400">Validação elétrica, estabilidade estrutural e teste de embalagem contra impactos.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Visualizador Mockup 3D Interativo / Simulação de Produto (5 Colunas) -->
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 border border-slate-800 text-center flex flex-col items-center justify-center space-y-4">
+                    <div class="w-full h-64 rounded-2xl bg-slate-950 border border-slate-800 relative overflow-hidden flex items-center justify-center group p-4">
+                        
+                        <!-- SVG Smart Assistente Mockup Diagram -->
+                        <svg viewBox="0 0 300 300" class="w-48 h-48 text-sky-400 transition-transform duration-500 group-hover:scale-105">
+                            <!-- Outer Cabinet Body -->
+                            <rect x="50" y="40" width="200" height="220" rx="16" fill="#0f172a" stroke="#38bdf8" stroke-width="3" />
+                            <!-- Drawer 1 -->
+                            <rect x="65" y="60" width="170" height="50" rx="8" fill="#1e293b" stroke="#475569" stroke-width="2" />
+                            <circle cx="150" cy="85" r="4" fill="#fbbf24" />
+                            <!-- Smart Compartment for Assistant -->
+                            <rect x="65" y="125" width="170" height="75" rx="8" fill="#0a0f1d" stroke="#38bdf8" stroke-dasharray="4,4" stroke-width="1.5" />
+                            <!-- Smart Speaker Icon inside -->
+                            <ellipse cx="150" cy="160" rx="20" ry="12" fill="#38bdf8" opacity="0.3" />
+                            <circle cx="150" cy="155" r="10" fill="#38bdf8" />
+                            <circle cx="150" cy="155" r="4" fill="#05070e" />
+                            <!-- LED Glow Strip Bottom -->
+                            <line x1="65" y1="230" x2="235" y2="230" stroke="#10b981" stroke-width="4" stroke-linecap="round" />
+                        </svg>
+
+                        <div class="absolute top-3 left-3 bg-slate-900/90 text-sky-400 border border-sky-500/30 font-mono text-[10px] px-2.5 py-1 rounded-md">
+                            Smart Assistente v1.0 Piloto
+                        </div>
+                    </div>
+
+                    <div class="w-full text-left space-y-2">
+                        <div class="flex justify-between text-xs">
+                            <span class="text-slate-400">Preço Indicativo Sugerido:</span>
+                            <span class="font-bold text-white font-mono">R$ 800 - R$ 1.500</span>
+                        </div>
+                        <div class="flex justify-between text-xs">
+                            <span class="text-slate-400">Lote Inicial Recomendado:</span>
+                            <span class="font-bold text-emerald-400 font-mono">3 Protótipos + Lote 10 Unidades</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ABA 5: PLANO DE AÇÃO 5W2H (TABELA INTERATIVA & FILTRÁVEL) -->
+        <div id="tab-5w2h" class="tab-content hidden space-y-6">
+            <div class="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                <div>
+                    <h2 class="text-2xl font-bold text-white">Plano de Ação 5W2H (90 Dias)</h2>
+                    <p class="text-slate-400 text-xs sm:text-sm">Execução estruturada com prazos, responsáveis e estimativas orçamentárias.</p>
+                </div>
+
+                <!-- Input de Busca e Filtro -->
+                <div class="flex items-center gap-3 w-full sm:w-auto">
+                    <div class="relative w-full sm:w-64">
+                        <i class="ph-bold ph-magnifying-glass absolute left-3 top-2.5 text-slate-500 text-sm"></i>
+                        <input type="text" id="inputSearch5W2H" oninput="filter5W2HTable()" placeholder="Buscar ação ou responsável..." 
+                            class="w-full bg-slate-950 text-xs text-slate-200 rounded-xl pl-9 pr-3 py-2 border border-slate-800 focus:outline-none focus:border-sky-500">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tabela Responsiva Glassmorphism -->
+            <div class="glass-panel rounded-3xl overflow-hidden border border-slate-800">
+                <div class="overflow-x-auto">
+                    <table class="w-full text-left border-collapse text-xs">
+                        <thead>
+                            <tr class="bg-slate-900/90 text-slate-300 font-mono uppercase text-[11px] border-b border-slate-800">
+                                <th class="p-4">Ação (What)</th>
+                                <th class="p-4">Justificativa (Why)</th>
+                                <th class="p-4">Local (Where)</th>
+                                <th class="p-4">Prazo (When)</th>
+                                <th class="p-4">Responsável (Who)</th>
+                                <th class="p-4">Como Fazer (How)</th>
+                                <th class="p-4 text-right">Custo (How Much)</th>
+                            </tr>
+                        </thead>
+                        <tbody id="tbody5W2H" class="divide-y divide-slate-800/60 text-slate-300">
+                            
+                            <!-- Ação 1 -->
+                            <tr class="hover:bg-slate-800/40 transition-colors">
+                                <td class="p-4 font-bold text-white">1. Mapear & Classificar sobras de MDF</td>
+                                <td class="p-4 text-slate-400">Reduzir perdas e conhecer disponibilidade de insumos nobres.</td>
+                                <td class="p-4 font-mono text-slate-400">Oficina & Estoque</td>
+                                <td class="p-4 font-mono text-sky-400 font-semibold">Dias 1 a 30 (S1-S4)</td>
+                                <td class="p-4"><span class="px-2.5 py-1 rounded-full bg-slate-800 text-slate-200 font-medium">Gestor & Produção</span></td>
+                                <td class="p-4 text-slate-400">Medir retalhos, criar cadastro e rotina visual de triagem.</td>
+                                <td class="p-4 text-right font-mono font-bold text-amber-400">R$ 150 - R$ 250</td>
+                            </tr>
+
+                            <!-- Ação 2 -->
+                            <tr class="hover:bg-slate-800/40 transition-colors">
+                                <td class="p-4 font-bold text-white">2. Prototipar & Testar Smart Assistente</td>
+                                <td class="p-4 text-slate-400">Verificar viabilidade técnica, elétrica e aceitação dos clientes.</td>
+                                <td class="p-4 font-mono text-slate-400">Oficina & Clientes</td>
+                                <td class="p-4 font-mono text-sky-400 font-semibold">Dias 15 a 45 (S5-S8)</td>
+                                <td class="p-4"><span class="px-2.5 py-1 rounded-full bg-slate-800 text-slate-200 font-medium">Gestor & Marceneiro</span></td>
+                                <td class="p-4 text-slate-400">Fabricar 3 protótipos, testar estabilidade e componentes.</td>
+                                <td class="p-4 text-right font-mono font-bold text-amber-400">R$ 1.200</td>
+                            </tr>
+
+                            <!-- Ação 3 -->
+                            <tr class="hover:bg-slate-800/40 transition-colors">
+                                <td class="p-4 font-bold text-white">3. Implantar Ficha de Custos & Lote Piloto</td>
+                                <td class="p-4 text-slate-400">Validar preço de venda, margem de contribuição e capacidade.</td>
+                                <td class="p-4 font-mono text-slate-400">Produção & Admin</td>
+                                <td class="p-4 font-mono text-sky-400 font-semibold">Dias 30 a 75 (S5-S10)</td>
+                                <td class="p-4"><span class="px-2.5 py-1 rounded-full bg-slate-800 text-slate-200 font-medium">Gestor & Apoio Admin</span></td>
+                                <td class="p-4 text-slate-400">Registrar insumos, horas e fabricar lote piloto até 10 peças.</td>
+                                <td class="p-4 text-right font-mono font-bold text-amber-400">R$ 800</td>
+                            </tr>
+
+                            <!-- Ação 4 -->
+                            <tr class="hover:bg-slate-800/40 transition-colors">
+                                <td class="p-4 font-bold text-white">4. Criar Catálogo & Campanha Digital</td>
+                                <td class="p-4 text-slate-400">Gerar contatos qualificados e testar taxa de conversão.</td>
+                                <td class="p-4 font-mono text-slate-400">Instagram & WhatsApp</td>
+                                <td class="p-4 font-mono text-sky-400 font-semibold">Dias 45 a 90 (S7-S10)</td>
+                                <td class="p-4"><span class="px-2.5 py-1 rounded-full bg-slate-800 text-slate-200 font-medium">Resp. Comercial</span></td>
+                                <td class="p-4 text-slate-400">Fotografar móveis, publicar demonstrações e medir origem de leads.</td>
+                                <td class="p-4 text-right font-mono font-bold text-amber-400">R$ 500 - R$ 600</td>
+                            </tr>
+
+                            <!-- Ação 5 -->
+                            <tr class="hover:bg-slate-800/40 transition-colors">
+                                <td class="p-4 font-bold text-white">5. Instituir Painel de Indicadores (PDCA)</td>
+                                <td class="p-4 text-slate-400">Acompanhar resultados mensais e corrigir desvios operacionais.</td>
+                                <td class="p-4 font-mono text-slate-400">Administração</td>
+                                <td class="p-4 font-mono text-sky-400 font-semibold">A partir do dia 30 / Mensal</td>
+                                <td class="p-4"><span class="px-2.5 py-1 rounded-full bg-slate-800 text-slate-200 font-medium">Gestor</span></td>
+                                <td class="p-4 text-slate-400">Atualizar planilha gerencial e realizar reuniões mensais de análise.</td>
+                                <td class="p-4 text-right font-mono font-bold text-amber-400">R$ 150 - R$ 200</td>
+                            </tr>
+
+                        </tbody>
+                    </table>
+                </div>
+
+                <!-- Totalizador de Orçamento -->
+                <div class="p-4 bg-slate-950 border-t border-slate-800 flex flex-col sm:flex-row items-center justify-between text-xs gap-3">
+                    <span class="text-slate-400 font-mono">✦ Orçamento Incremental Ilustrativo Acumulado</span>
+                    <div class="text-right">
+                        <span class="text-slate-400 mr-2">Total Estimado do Piloto:</span>
+                        <strong class="text-emerald-400 font-mono text-sm">R$ 2.050 a R$ 3.000</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ABA 6: SIMULADOR FINANCEIRO INTERATIVO (PAYBACK & MARGEM DE CONTRIBUIÇÃO) -->
+        <div id="tab-simulador" class="tab-content hidden space-y-6">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Inputs do Simulador (5 Colunas) -->
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 space-y-6 border border-slate-800">
+                    <div>
+                        <div class="flex items-center gap-2 text-sky-400 text-xs font-mono font-semibold mb-1">
+                            <i class="ph-bold ph-sliders text-base"></i> SIMULADOR DE VIABILIDADE DA LINHA SMART
+                        </div>
+                        <h3 class="text-xl font-bold text-white">Calculadora de Margem & Payback</h3>
+                        <p class="text-slate-400 text-xs mt-1">
+                            Ajuste os valores de venda e custos unitários variáveis para simular o ponto de equilíbrio do orçamento do piloto.
+                        </p>
+                    </div>
+
+                    <div class="space-y-4">
+                        <!-- Preço de Venda Unitário -->
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1.5">
+                                <label class="text-slate-300">Preço de Venda Unitário (R$)</label>
+                                <span id="simPriceVal" class="text-sky-400 font-bold">R$ 1.000</span>
+                            </div>
+                            <input type="range" id="simPrice" min="800" max="1500" step="50" value="1000" oninput="runFinancialSim()"
+                                class="w-full accent-sky-400 bg-slate-800 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Custo do MDF Sobras Reaproveitado -->
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1.5">
+                                <label class="text-slate-300">Custo Atribuído MDF / Corte (R$)</label>
+                                <span id="simMdfVal" class="text-amber-400 font-bold">R$ 180</span>
+                            </div>
+                            <input type="range" id="simMdf" min="50" max="350" step="10" value="180" oninput="runFinancialSim()"
+                                class="w-full accent-amber-400 bg-slate-800 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Custo Ferragens / Eletrônica / Iluminação -->
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1.5">
+                                <label class="text-slate-300">Ferragens + Eletrônica + LED (R$)</label>
+                                <span id="simComponentsVal" class="text-indigo-400 font-bold">R$ 320</span>
+                            </div>
+                            <input type="range" id="simComponents" min="150" max="600" step="10" value="320" oninput="runFinancialSim()"
+                                class="w-full accent-indigo-400 bg-slate-800 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Custo Mão de Obra / Embalagem / Outros -->
+                        <div>
+                            <div class="flex justify-between text-xs font-mono mb-1.5">
+                                <label class="text-slate-300">Mão de Obra Directa + Embalagem (R$)</label>
+                                <span id="simLaborVal" class="text-rose-400 font-bold">R$ 150</span>
+                            </div>
+                            <input type="range" id="simLabor" min="80" max="350" step="10" value="150" oninput="runFinancialSim()"
+                                class="w-full accent-rose-400 bg-slate-800 rounded-lg cursor-pointer">
+                        </div>
+
+                        <!-- Seleção do Orçamento Incremental Meta -->
+                        <div>
+                            <label class="text-xs font-mono text-slate-300 block mb-1.5">Meta de Retorno de Investimento (Piloto)</label>
+                            <select id="simBudgetTarget" onchange="runFinancialSim()" class="w-full bg-slate-950 text-xs text-slate-200 rounded-xl px-3 py-2 border border-slate-800">
+                                <option value="3000">Orçamento Máximo Recomendado (R$ 3.000)</option>
+                                <option value="2050" selected>Orçamento Enxuto das 4 Ações (R$ 2.050)</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Resultados e Gráficos de Output (7 Colunas) -->
+                <div class="lg:col-span-7 space-y-6">
+                    
+                    <!-- KPI Cards de Resultado -->
+                    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+                        <div class="glass-card rounded-2xl p-4 text-center">
+                            <span class="text-[11px] text-slate-400 font-mono uppercase">Custo Variável Unitário</span>
+                            <div id="resTotalCost" class="text-xl font-bold font-mono text-rose-400 mt-1">R$ 650,00</div>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-4 text-center">
+                            <span class="text-[11px] text-slate-400 font-mono uppercase">Margem de Contribuição</span>
+                            <div id="resMargin" class="text-xl font-bold font-mono text-emerald-400 mt-1">R$ 350,00 (35%)</div>
+                        </div>
+
+                        <div class="glass-card rounded-2xl p-4 text-center">
+                            <span class="text-[11px] text-slate-400 font-mono uppercase">Payback (Unidades)</span>
+                            <div id="resPaybackUnits" class="text-xl font-bold font-mono text-sky-400 mt-1">6 Unidades</div>
+                        </div>
+                    </div>
+
+                    <!-- Explicação Didática da Simulação -->
+                    <div class="glass-panel rounded-3xl p-6 border border-slate-800">
+                        <h4 class="text-sm font-bold text-white mb-2 flex items-center gap-2">
+                            <i class="ph-bold ph-lightbulb text-amber-400"></i> Parecer Econômico do Simulação
+                        </h4>
+                        <p id="resAnalysisText" class="text-xs text-slate-300 leading-relaxed">
+                            Com o preço sugerido de R$ 1.000 e custos variáveis de R$ 650, cada peça vendida gera R$ 350 para cobrir o investimento incremental do plano de ação. Serão necessárias 6 unidades comercializadas no piloto para cobrir o investimento de R$ 2.050.
+                        </p>
+                    </div>
+
+                    <!-- Gráfico de Rosca (Custo vs Margem) -->
+                    <div class="glass-panel rounded-3xl p-6 border border-slate-800 flex flex-col items-center">
+                        <div class="text-xs text-slate-400 font-mono mb-2 uppercase">Composição do Preço de Venda (R$)</div>
+                        <div class="w-full h-48 relative">
+                            <canvas id="chartFinancialComposition"></canvas>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+        <!-- ABA 7: KPIS & SIMULADOR PDCA -->
+        <div id="tab-kpis" class="tab-content hidden space-y-6">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                
+                <!-- KPI 1: Aproveitamento MDF -->
+                <div class="glass-card rounded-3xl p-5 border-t-4 border-t-emerald-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-mono text-slate-400">APROVEITAMENTO MDF</span>
+                        <i class="ph-bold ph-recycle text-emerald-400 text-lg"></i>
+                    </div>
+                    <div class="text-2xl font-extrabold text-white font-mono">≥ 60%</div>
+                    <p class="text-[11px] text-slate-400 mt-1">Meta até 3º mês de medição mensal.</p>
+                </div>
+
+                <!-- KPI 2: Protótipos Aprovados -->
+                <div class="glass-card rounded-3xl p-5 border-t-4 border-t-sky-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-mono text-slate-400">PROTÓTIPOS APROVADOS</span>
+                        <i class="ph-bold ph-check-square text-sky-400 text-lg"></i>
+                    </div>
+                    <div class="text-2xl font-extrabold text-white font-mono">100% (3/3)</div>
+                    <p class="text-[11px] text-slate-400 mt-1">Aprovação total antes do lote piloto.</p>
+                </div>
+
+                <!-- KPI 3: Conversão Comercial -->
+                <div class="glass-card rounded-3xl p-5 border-t-4 border-t-amber-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-mono text-slate-400">CONVERSÃO LEADS</span>
+                        <i class="ph-bold ph-funnel text-amber-400 text-lg"></i>
+                    </div>
+                    <div class="text-2xl font-extrabold text-white font-mono">≥ 10%</div>
+                    <p class="text-[11px] text-slate-400 mt-1">Vendas fechadas sobre contatos úteis.</p>
+                </div>
+
+                <!-- KPI 4: Retrabalho de Peças -->
+                <div class="glass-card rounded-3xl p-5 border-t-4 border-t-rose-400">
+                    <div class="flex items-center justify-between mb-2">
+                        <span class="text-xs font-mono text-slate-400">ÍNDICE RETRABALHO</span>
+                        <i class="ph-bold ph-arrow-counter-clockwise text-rose-400 text-lg"></i>
+                    </div>
+                    <div class="text-2xl font-extrabold text-white font-mono">≤ 5%</div>
+                    <p class="text-[11px] text-slate-400 mt-1">Peças refeitas sobre produzidas.</p>
+                </div>
+
+            </div>
+
+            <!-- Gráfico Geral de Metas & Ciclo PDCA -->
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
+                
+                <!-- Radar Chart Metas de Desempenho (7 Colunas) -->
+                <div class="lg:col-span-7 glass-panel rounded-3xl p-6 border border-slate-800">
+                    <h3 class="text-base font-bold text-white mb-1">Painel Geral de Metas Indicadoras</h3>
+                    <p class="text-slate-400 text-xs mb-4">Acompanhamento contínuo dos objetivos operacionais e comerciais do plano de consultoria.</p>
+                    <div class="h-64 relative">
+                        <canvas id="chartKpiRadar"></canvas>
+                    </div>
+                </div>
+
+                <!-- Ciclo PDCA da Consultoria (5 Colunas) -->
+                <div class="lg:col-span-5 glass-panel rounded-3xl p-6 border border-slate-800 space-y-4">
+                    <h3 class="text-base font-bold text-white flex items-center gap-2">
+                        <i class="ph-bold ph-arrows-clockwise text-sky-400"></i> Ciclo PDCA de Gestão
+                    </h3>
+
+                    <div class="space-y-2 text-xs">
+                        <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <strong class="text-sky-400 block font-mono">P - PLAN (Planejar)</strong>
+                            <span class="text-slate-300">Revisar metas, pedidos e insumos de sobras disponíveis semanalmente.</span>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <strong class="text-emerald-400 block font-mono">D - DO (Executar)</strong>
+                            <span class="text-slate-300">Registrar horas, fichas de corte de MDF, testes de protótipos e vendas.</span>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <strong class="text-amber-400 block font-mono">C - CHECK (Verificar)</strong>
+                            <span class="text-slate-300">Comparar mensalmente os dados apurados com as metas de margem e retrabalho.</span>
+                        </div>
+                        <div class="p-2.5 rounded-xl bg-slate-950 border border-slate-800">
+                            <strong class="text-rose-400 block font-mono">A - ACT (Agir)</strong>
+                            <span class="text-slate-300">Ajustar precificação, embalagem ou processo de triagem conforme desvios.</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <!-- FOOTER & CRÉDITOS ACADÊMICOS -->
+        <footer class="glass-panel rounded-3xl p-6 text-xs text-slate-400 flex flex-col sm:flex-row items-center justify-between gap-4 border border-slate-800">
+            <div class="flex items-center gap-3">
+                <div class="w-8 h-8 rounded-xl bg-sky-500/10 text-sky-400 flex items-center justify-center font-bold font-mono">
+                    U
+                </div>
+                <div>
+                    <div class="text-slate-200 font-semibold">UNEX - Centro Universitário de Excelência</div>
+                    <div class="text-[11px] text-slate-500">Curso de Administração • Disciplina de Planejamento Estratégico (2026)</div>
+                </div>
+            </div>
+
+            <div class="text-center sm:text-right font-mono text-[11px] text-slate-500">
+                <span>Projeto Integrador: Estratégia em Ação</span><br>
+                <span>Docente: Prof. Yukio Takada • Itabuna - BA</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- LOGIC & INTERACTION SCRIPTS -->
+    <script>
+        // --- 1. TAB SWITCHING LOGIC ---
+        function switchTab(tabId) {
+            // Hide all tab contents
+            document.querySelectorAll('.tab-content').forEach(tab => {
+                tab.classList.add('hidden');
+            });
+            // Remove active class from buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('bg-sky-500', 'text-slate-950', 'shadow-lg', 'shadow-sky-500/20');
+                btn.classList.add('text-slate-400', 'hover:text-white', 'hover:bg-slate-900/60');
+            });
+
+            // Show current tab
+            document.getElementById(tabId).classList.remove('hidden');
+
+            // Set current button active
+            const activeBtn = document.getElementById('btn-' + tabId);
+            activeBtn.classList.add('bg-sky-500', 'text-slate-950', 'shadow-lg', 'shadow-sky-500/20');
+            activeBtn.classList.remove('text-slate-400', 'hover:text-white', 'hover:bg-slate-900/60');
+
+            // Trigger chart resize on tab reveal if necessary
+            if (tabId === 'tab-simulador') {
+                renderFinancialChart();
+            } else if (tabId === 'tab-kpis') {
+                renderKpiRadarChart();
+            }
+        }
+
+        // --- 2. SWOT INTERACTIVE FILTERING ---
+        function filterSWOT(type) {
+            const grid = id => document.getElementById(id);
+            const text = document.getElementById('swot-cross-text');
+            
+            // Reset buttons style
+            document.querySelectorAll('.swot-btn').forEach(b => {
+                b.className = "swot-btn px-3 py-1.5 rounded-lg text-xs font-semibold bg-slate-900 text-slate-400 hover:text-white transition-all border border-slate-800";
+            });
+            document.getElementById('btn-swot-' + type).className = "swot-btn active px-3 py-1.5 rounded-lg text-xs font-semibold bg-sky-500 text-slate-950 transition-all";
+
+            const cards = ['card-swot-f', 'card-swot-w', 'card-swot-o', 'card-swot-t'];
+            cards.forEach(c => grid(c).classList.remove('opacity-25', 'scale-95'));
+
+            if (type === 'fo') {
+                grid('card-swot-w').classList.add('opacity-25', 'scale-95');
+                grid('card-swot-t').classList.add('opacity-25', 'scale-95');
+                text.innerHTML = '<strong class="text-emerald-400">Estratégia FO (Alavancagem):</strong> Utilizar a experiência do fundador e sobras de MDF para fabricar o Smart Assistente e capturar a demanda de móveis compactos funcionais.';
+            } else if (type === 'fa') {
+                grid('card-swot-w').classList.add('opacity-25', 'scale-95');
+                grid('card-swot-o').classList.add('opacity-25', 'scale-95');
+                text.innerHTML = '<strong class="text-amber-400">Estratégia FA (Confronto):</strong> Competir por alto acabamento e atributos inteligentes para evitar guerra de preços com o varejo seriado.';
+            } else if (type === 'do') {
+                grid('card-swot-f').classList.add('opacity-25', 'scale-95');
+                grid('card-swot-t').classList.add('opacity-25', 'scale-95');
+                text.innerHTML = '<strong class="text-sky-400">Estratégia DO (Reforço):</strong> Implementar fichas de custo e lote piloto de até 10 unidades antes de acelerar vendas digitais.';
+            } else if (type === 'da') {
+                grid('card-swot-f').classList.add('opacity-25', 'scale-95');
+                grid('card-swot-o').classList.add('opacity-25', 'scale-95');
+                text.innerHTML = '<strong class="text-rose-400">Estratégia DA (Defesa):</strong> Rastrear custos totais de insumos e limitar o estoque inicial para mitigar oscilações de mercado.';
+            } else {
+                text.innerHTML = 'A Martins Planejados deve posicionar-se por <strong class="text-sky-300">diferenciação e qualidade</strong>, evitando a disputa por menor preço com o varejo. A validação piloto do Smart Assistente absorve sobras com margem positiva antes de expandir a produção.';
+            }
+        }
+
+        // --- 3. SEARCHABLE 5W2H TABLE ---
+        function filter5W2HTable() {
+            const query = document.getElementById('inputSearch5W2H').value.toLowerCase();
+            const rows = document.querySelectorAll('#tbody5W2H tr');
+
+            rows.forEach(row => {
+                const text = row.innerText.toLowerCase();
+                row.style.display = text.includes(query) ? '' : 'none';
+            });
+        }
+
+        // --- 4. FINANCIAL & PAYBACK SIMULATOR LOGIC ---
+        let financialChartInstance = null;
+        let kpiRadarChartInstance = null;
+
+        function runFinancialSim() {
+            const price = parseFloat(document.getElementById('simPrice').value);
+            const mdf = parseFloat(document.getElementById('simMdf').value);
+            const components = parseFloat(document.getElementById('simComponents').value);
+            const labor = parseFloat(document.getElementById('simLabor').value);
+            const budgetTarget = parseFloat(document.getElementById('simBudgetTarget').value);
+
+            // Update UI Labels
+            document.getElementById('simPriceVal').innerText = `R$ ${price.toLocaleString('pt-BR')}`;
+            document.getElementById('simMdfVal').innerText = `R$ ${mdf.toLocaleString('pt-BR')}`;
+            document.getElementById('simComponentsVal').innerText = `R$ ${components.toLocaleString('pt-BR')}`;
+            document.getElementById('simLaborVal').innerText = `R$ ${labor.toLocaleString('pt-BR')}`;
+
+            // Calculations
+            const variableCost = mdf + components + labor;
+            const marginContribution = price - variableCost;
+            const marginPercent = price > 0 ? ((marginContribution / price) * 100).toFixed(1) : 0;
+            
+            let paybackUnits = 0;
+            if (marginContribution > 0) {
+                paybackUnits = Math.ceil(budgetTarget / marginContribution);
+            } else {
+                paybackUnits = '∞ (Margem Negativa)';
+            }
+
+            // Display Results
+            document.getElementById('resTotalCost').innerText = `R$ ${variableCost.toLocaleString('pt-BR', {minimumFractionDigits: 2})}`;
+            
+            if (marginContribution > 0) {
+                document.getElementById('resMargin').innerText = `R$ ${marginContribution.toLocaleString('pt-BR', {minimumFractionDigits: 2})} (${marginPercent}%)`;
+                document.getElementById('resMargin').className = "text-xl font-bold font-mono text-emerald-400 mt-1";
+            } else {
+                document.getElementById('resMargin').innerText = `R$ ${marginContribution.toLocaleString('pt-BR', {minimumFractionDigits: 2})} (Prejuízo)`;
+                document.getElementById('resMargin').className = "text-xl font-bold font-mono text-rose-400 mt-1";
+            }
+
+            document.getElementById('resPaybackUnits').innerText = typeof paybackUnits === 'number' ? `${paybackUnits} Unidades` : paybackUnits;
+
+            // Text Explanation
+            const analysisBox = document.getElementById('resAnalysisText');
+            if (marginContribution > 0) {
+                analysisBox.innerHTML = `Com o preço de <strong>R$ ${price}</strong> e custos variáveis totais de <strong>R$ ${variableCost}</strong> por unidade, a margem de contribuição é de <strong class="text-emerald-400">R$ ${marginContribution} (${marginPercent}%)</strong>. Serão necessárias <strong>${paybackUnits} peças comercializadas</strong> para pagar integralmente o investimento incremental de <strong>R$ ${budgetTarget}</strong> do plano de ação.`;
+            } else {
+                analysisBox.innerHTML = `<span class="text-rose-400 font-bold">Atenção:</span> Com estes custos, o produto gera prejuízo unitário de R$ ${Math.abs(marginContribution)}. Reajuste o preço ou reduza os insumos.`;
+            }
+
+            // Render Chart
+            renderFinancialChart(price, mdf, components, labor, marginContribution > 0 ? marginContribution : 0);
+        }
+
+        function renderFinancialChart(price = 1000, mdf = 180, components = 320, labor = 150, margin = 350) {
+            const ctx = document.getElementById('chartFinancialComposition');
+            if (!ctx) return;
+
+            if (financialChartInstance) {
+                financialChartInstance.destroy();
+            }
+
+            financialChartInstance = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['MDF Reaproveitado', 'Ferragens/Eletrônica', 'Mão de Obra/Emb.', 'Margem de Contribuição'],
+                    datasets: [{
+                        data: [mdf, components, labor, margin],
+                        backgroundColor: ['#fbbf24', '#8b5cf6', '#f43f5e', '#10b981'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'right',
+                            labels: { color: '#94a3b8', font: { size: 10, family: 'Plus Jakarta Sans' } }
+                        }
+                    },
+                    cutout: '65%'
+                }
+            });
+        }
+
+        // --- 5. KPI RADAR CHART ---
+        function renderKpiRadarChart() {
+            const ctx = document.getElementById('chartKpiRadar');
+            if (!ctx) return;
+
+            if (kpiRadarChartInstance) {
+                kpiRadarChartInstance.destroy();
+            }
+
+            kpiRadarChartInstance = new Chart(ctx, {
+                type: 'radar',
+                data: {
+                    labels: ['Aproveitamento MDF (≥60%)', 'Protótipos (100%)', 'Conversão Leads (≥10%)', 'Satisfação (≥4.5/5)', 'Controle Retrabalho (≤5%)'],
+                    datasets: [
+                        {
+                            label: 'Meta Proposta',
+                            data: [60, 100, 10, 90, 95], // Normalized score for visual
+                            borderColor: '#38bdf8',
+                            backgroundColor: 'rgba(56, 189, 248, 0.2)',
+                            borderWidth: 2
+                        }
+                    ]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        r: {
+                            angleLines: { color: 'rgba(255, 255, 255, 0.1)' },
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            pointLabels: { color: '#94a3b8', font: { size: 10 } },
+                            ticks: { display: false }
+                        }
+                    },
+                    plugins: {
+                        legend: { display: false }
+                    }
+                }
+            });
+        }
+
+        // Initialize default view
+        window.addEventListener('DOMContentLoaded', () => {
+            runFinancialSim();
+        });
+    </script>
+</body>
+</html>
